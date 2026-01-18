@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HexaPower</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;">
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8);"></div>
+        
+        <img src="uploads/6056217.jpg" alt="Background" style="width: 100%; height: 100%; object-fit: cover;">
+    </div>
+    <div class="announcement-bar">
+        <span><i class="fas fa-bullhorn"></i> PROMO AWAL TAHUN: Diskon 20% untuk semua jenis BMS! Kode: <strong>HEXA2026</strong></span>
+    </div>
+    <div class="content-wrapper">
+    <header>
+        <nav>
+            <div class="logo-container">
+                <a href="#" class="nav-link" data-target="home">
+                    <img src="uploads/logo.png" alt="Logo" class="main-logo">
+                </a>
+            </div>
+
+            <ul class="nav-links" id="nav-menu">
+                <li><a href="#" class="nav-link active" data-target="home">Home</a></li>
+                <li><a href="#" class="nav-link" data-target="produk">Katalog</a></li>
+                <li><a href="#" class="nav-link" data-target="tentang">Tentang</a></li>
+                <li><a href="#" class="nav-link" data-target="kontak">Kontak</a></li>
+                
+                <li class="mobile-only">
+                    <a href="#" class="nav-link btn-download-mobile" data-target="download">Download APK</a>
+                </li>
+            </ul>
+
+            <div class="desktop-only">
+                <a href="#" class="btn-nav nav-link" data-target="download">Download APK</a>
+            </div>
+
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+    <main class="container"> 
+        <section id="home" class="page active">
+            <div class="hero-premium">
+                <div class="hero-inner">
+                    <div class="hero-text">
+                        <div class="badge-promo">
+                            <i class="fas fa-fire"></i> <span>Promo Terbatas: Diskon 20% Baterai LFP</span>
+                        </div>
+                        <h1>Revolusi Energi <br><span class="highlight">Tanpa Batas</span></h1>
+                        <p>Kelola sistem daya mandiri dengan teknologi penyimpanan tercanggih. Efisien, aman, dan terkoneksi langsung ke database cerdas kami.</p>
+                        <div class="hero-cta">
+                            <button class="btn-main nav-link" data-target="produk">Mulai Sekarang</button>
+                            <div class="promo-timer">
+                                <small>Berakhir dalam:</small>
+                                <div id="countdown-timer">00d : 00h : 00m</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hero-image-box">
+                        <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=800" class="main-img" alt="Tech">
+                    </div>
+                </div>
+            </div>
+
+            <div class="value-section">
+                <div class="value-grid">
+                    <div class="value-card">
+                        <i class="fas fa-bolt"></i>
+                        <h3>Akses Instan</h3>
+                        <p>Sinkronisasi data real-time dari database PostgreSQL kami untuk monitoring daya.</p>
+                    </div>
+                    <div class="value-card">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Keamanan LFP</h3>
+                        <p>Teknologi Lithium Ferro-Phosphate yang anti-meledak dan tahan panas ekstrem.</p>
+                    </div>
+                    <div class="value-card">
+                        <i class="fas fa-user-check"></i>
+                        <h3>User Friendly</h3>
+                        <p>Dashboard kendali yang dirancang untuk pengguna awam hingga profesional.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="featured-preview">
+                <div class="section-header">
+                    <h2>Produk Unggulan</h2>
+                    <p>Terhubung langsung dengan inventaris database kami</p>
+                </div>
+                <div id="featuredGrid" class="featured-grid">
+                </div>
+            </div>
+
+            <div class="social-proof">
+                <div class="proof-stats">
+                    
+                    <div class="stat-item">
+                        <h2 class="counter">24/7</h2>
+                        <p>Technical Support</p>
+                    </div>
+                </div>
+                <div class="testimonials">
+                    <div class="testi-card">
+                        <p>"Transisi ke sistem VoltGreen adalah investasi terbaik untuk pabrik kami."</p>
+                        <span>- Budi Santoso, CEO IndoTech</span>
+                    </div>
+                </div>  
+            </div>
+        </section>
+
+        <section id="produk" class="page">
+            <div class="shop-controls">
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Cari nama baterai atau komponen...">
+                    <button id="searchButton">
+                        <i class="fas fa-search"></i>
+                        <span>Cari</span>
+                    </button>
+                </div>
+                <div class="category-filter">
+                    <button class="cat-btn active" data-cat="all">Semua</button>
+                    <button class="cat-btn" data-cat="Baterai">Baterai</button>
+                    <button class="cat-btn" data-cat="Charger">Charger</button>
+                    <button class="cat-btn" data-cat="BMS">BMS</button>
+                    <button class="cat-btn" data-cat="Kontroller">Kontroler</button>
+                    <button class="cat-btn" data-cat="Elektronika">Elektronika</button>
+                    <button class="cat-btn" data-cat="Aksesoris">Aksesoris</button>
+                    <button class="cat-btn" data-cat="Kabel">Kabel</button> 
+                </div>
+            </div>
+            <div class="product-grid" id="productGrid"></div>
+        </section>
+
+        <section id="tentang" class="page">
+            <div class="about-header">
+                <h1 class="section-title">Energi Andal</h1>
+                <h3 class="subtitle">Teknologi Terkini</h3>
+            </div>
+
+            <div class="vismis-container">
+                <div class="vismis-card visi">
+                    <div class="vismis-icon"><i class="fas fa-eye"></i></div>
+                    <div class="vismis-content">
+                        <h3>Visi Kami</h3>
+                        <p>Menjadi brand terdepan dan terpercaya dalam solusi energi listrik berbasis baterai lithium yang aman, efisien, dan berkelanjutan untuk mendukung ekosistem kendaraan listrik di Indonesia dan global.</p>
+                    </div>
+                </div>
+
+                <div class="vismis-card misi">
+                    <div class="vismis-icon"><i class="fas fa-rocket"></i></div>
+                        <div class="vismis-content">
+                            <h3>Misi Kami</h3>
+                            <ul>
+                                <li><i class="fas fa-check-circle"></i> Mengembangkan dan menyediakan baterai lithium, fast charger, dan BMS berkualitas tinggi dengan standar keamanan dan performa terbaik.</li>
+                                <li><i class="fas fa-check-circle"></i> Mendukung percepatan adopsi motor listrik melalui produk yang efisien, tahan lama, dan mudah digunakan.</li>
+                                <li><i class="fas fa-check-circle"></i> Mengutamakan inovasi teknologi untuk meningkatkan efisiensi energi, keandalan sistem, dan umur pakai baterai.</li>
+                                <li><i class="fas fa-check-circle"></i> Memberikan layanan dan dukungan teknis yang responsif serta berorientasi pada kepuasan pelanggan.</li>
+                                <li><i class="fas fa-check-circle"></i> Berkontribusi terhadap lingkungan yang lebih bersih dengan menghadirkan solusi energi ramah lingkungan dan berkelanjutan.</li>
+                                <li><i class="fas fa-check-circle"></i> Memberikan dukungan teknis dan edukasi energi terbarukan bagi UMKM.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="factory-showcase glass-card">
+                    <div class="factory-text">
+                        <h2><i class="fas fa-industry"></i> Fasilitas Produksi Modern</h2>
+                        <p>HEXA POWER diproduksi di pabrikan profesional dengan standar kualitas tinggi, melalui proses manufaktur terkontrol untuk memastikan keamanan, keandalan, dan performa optimal pada setiap produk.</p>
+                        <div class="factory-stats">
+                        <div class="stat-item"><strong>100%</strong><br>Quality Control</div>
+                        <div class="stat-item"><strong>ISO</strong><br>Certified</div>
+                    </div>
+                </div>
+                <div class="factory-img-container">
+                    <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80" alt="Pabrik Kami">
+                </div>
+            </div>
+        </section>
+
+        <section id="kontak" class="page">
+            <div class="contact-info glass-card">
+                <h2>Hubungi Kami</h2>          
+                <p>
+                    <i class="fas fa-map-marker-alt"></i> 
+                    <a href="https://maps.google.com/?q=Jl.+Teknologi+Hijau+No.+123,+Surabaya,+Jawa+Timur" target="_blank">
+                        Jl. Teknologi Hijau No. 123, Surabaya, Jawa Timur
+                    </a>
+                </p>
+                <p>
+                    <i class="fab fa-whatsapp"></i> 
+                    <a href="https://api.whatsapp.com/send?phone=+6285178098989" target="_blank">
+                        +62 851-7809-8989
+                    </a>
+                </p>
+                <!--
+                <p>
+                    <i class="fas fa-envelope"></i> 
+                    <a href="mailto:admin@voltgreen.id">
+                        hexapower
+                    </a>
+                </p>
+                -->
+                <p>
+                    <i class="fab fa-instagram"></i> 
+                    <a href="https://www.instagram.com/hexa.power.tech?igsh=Mzk5cXVuc3llZjA3" target="_blank">
+                        hexa.power.tech
+                    </a>
+                </p>
+                <p>
+                    <i class="fab fa-facebook"></i> 
+                    <a href="https://www.facebook.com/share/1KzENvXJT2/" target="_blank">
+                        Hexa Power
+                    </a>
+                </p>
+            </div>
+        </section>
+
+        <section id="download" class="page">
+            <h2 class="section-title">Pusat Unduhan Aplikasi</h2>
+            <div class="download-grid">
+                
+                <div class="glass-card download-card">
+                    <div class="apk-icon">
+                        <i class="fas fa-download"></i>
+                    </div>
+                    <h3>CAN-Control</h3>
+                    <p class="apk-ver">Versi: 1.33</p>
+                    <ul class="apk-features">
+                        <li><i class="fas fa-check"></i> Pengaturan charger</li>
+                        <li><i class="fas fa-check"></i> Estimasi Waktu Pengisian</li>
+                    </ul>
+                    <a href="uploads/CAN-Control V1.33.apk" class="btn-primary">
+                        <i class="fab fa-android"></i> Download APK
+                    </a>
+                </div>
+
+                <div class="glass-card download-card">
+                    <div class="apk-icon admin">
+                        <i class="fas fa-download"></i>
+                    </div>
+                    <h3>HEXA BMS</h3>
+                    <p class="apk-ver">Versi: 3.00.05</p>
+                    <ul class="apk-features">
+                        <li><i class="fas fa-check"></i> Pengaturan BMS Lanjutan</li>
+                        <li><i class="fas fa-check"></i> Log Riwayat Tegangan</li>
+                    </ul>
+                    <a href="uploads/hexa_3.00.05.apk" class="btn-primary" >
+                        <i class="fab fa-android"></i> Download APK
+                    </a>
+                </div>
+
+            </div>
+        </section>
+        <section id="halaman-detail" class="page">
+            <div class="detail-container">
+                <div class="back-nav">
+                    <button onclick="kembaliKeKatalog()" class="btn-back">
+                        <i class="fas fa-arrow-left"></i> Kembali ke Katalog
+                    </button>
+                </div>
+
+                <div class="detail-content glass-card">
+                    <div class="detail-media">
+                        <div class="main-img-container">
+                            <img id="detailImg" src="" alt="Produk">
+                        </div>
+                        <div id="thumbGallery" class="thumbnail-list"></div>
+                    </div>
+
+                    <div class="detail-info">
+                        <span id="detailKategori" class="badge-cat">Kategori</span>
+                        
+                        <h1 id="detailJudul">Nama Produk</h1>
+                        <p id="detailHarga">Rp 0</p>
+                            
+                        <div class="desc-section">
+                            <h4>Deskripsi:</h4>
+                            <p id="detailDeskripsi">...</p>
+                        </div>
+
+                        <a id="detailWaBtn" href="https://api.whatsapp.com/send?phone=+6285178098989" target="_blank" class="btn-whatsapp">
+                            <i class="fab fa-whatsapp"></i> Pesan via WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    </div>
+    <footer class="footer-premium">
+        <div class="footer-glow"></div>
+        <div class="footer-main">
+            <div class="footer-col brand-col">
+                <div class="footer-logo-container">
+                    <img src="uploads/logo.png" alt="VoltGreen Logo" class="footer-logo-img">
+                </div>
+                <p>Memimpin revolusi energi terbarukan dengan solusi baterai cerdas dan berkelanjutan untuk masa depan bumi.</p>
+                <div class="footer-status">
+                    <span class="status-dot"></span>
+                    <span>Sistem Database Online</span>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Navigasi</h4>
+                <ul>
+                    <li><a href="#" class="nav-link" data-target="home">Beranda</a></li>
+                    <li><a href="#" class="nav-link" data-target="produk">Katalog Produk</a></li>
+                    <li><a href="#" class="nav-link" data-target="tentang">Tentang Kami</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Kontak Kami</h4>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Surabaya, Jawa Timur, Indonesia</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:support@voltgreen.id">support@voltgreen.id</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-whatsapp"></i>
+                    <a href="https://api.whatsapp.com/send?phone=+6285178098989">+62 851-7809-8989</a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Ikuti Kami</h4>
+                <div class="social-grid">
+                    <a href="https://www.facebook.com/share/1KzENvXJT2/" class="social-box fb"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/hexa.power.tech?igsh=Mzk5cXVuc3llZjA3" class="social-box ig"><i class="fab fa-instagram"></i></a>
+                    <a href="mailto:support@voltgreen.id" class="social-box mail"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-copyright">
+            <p>&copy; 2026 VoltGreen Energy Tech. Built for a Greener Future.</p>
+        </div>
+    </footer>
+
+    
+
+    <script src="script.js"></script>
+    <a href="https://api.whatsapp.com/send?phone=+6285178098989" class="wa-float-simple" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+</body>
+</html>

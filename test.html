@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Storage - Teknologi Energi Pintar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Reset dan Font */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #0f0f23, #1a1a2e);
+    color: #fff;
+    overflow-x: hidden;
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Hero Section */
+#home {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.bg-blur-1, .bg-blur-2 {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,255,0,0.1), transparent);
+    filter: blur(100px);
+    animation: float 6s ease-in-out infinite;
+}
+.bg-blur-1 { top: 10%; left: 10%; }
+.bg-blur-2 { bottom: 10%; right: 10%; }
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+.hero-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    z-index: 1;
+}
+.hero-content {
+    flex: 1;
+    max-width: 600px;
+}
+.hero-badge {
+    background: linear-gradient(45deg, #00ff88, #00aaff);
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 20px;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+@keyframes glow {
+    from { box-shadow: 0 0 10px #00ff88; }
+    to { box-shadow: 0 0 20px #00ff88; }
+}
+.text-gradient {
+    background: linear-gradient(45deg, #00ff88, #00aaff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.hero-btns {
+    margin: 30px 0;
+}
+.btn-primary-glow {
+    background: linear-gradient(45deg, #00ff88, #00aaff);
+    border: none;
+    padding: 15px 30px;
+    border-radius: 50px;
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.btn-primary-glow:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(0,255,136,0.5);
+}
+.btn-outline-pro {
+    border: 2px solid #00ff88;
+    background: transparent;
+    color: #00ff88;
+    padding: 15px 30px;
+    border-radius: 50px;
+    margin-left: 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+.btn-outline-pro:hover {
+    background: #00ff88;
+    color: #000;
+}
+
+.hero-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-top: 40px;
+}
+.stat-card {
+    background: rgba(255,255,255,0.1);
+    padding: 20px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    backdrop-filter: blur(10px);
+    position: relative;
+}
+.stat-card:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #000;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    white-space: nowrap;
+}
+.stat-num {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #00ff88;
+}
+
+/* Testimonial Section */
+.testimonial-section {
+    margin-top: 100px;
+    text-align: center;
+}
+.testimonial-slider {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    overflow: hidden;
+}
+.testimonial-card {
+    background: rgba(255,255,255,0.1);
+    padding: 20px;
+    border-radius: 15px;
+    max-width: 300px;
+    display: none;
+    animation: fadeIn 1s ease-in-out;
+}
+.testimonial-card:first-child { display: block; }
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.testimonial-img {
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    margin-bottom: 10px;
+}
+
+/* Produk Section */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+.product-card {
+    background: rgba(255,255,255,0.1);
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    backdrop-filter: blur(10px);
+}
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0,255,136,0.3)}
+    </style>
+</head>
+<body>
+    <main class="container"> 
+        <section id="home" class="page active">
+            <div class="bg-blur-1"></div>
+            <div class="bg-blur-2"></div>
+
+            <div class="hero-container">
+                <div class="hero-content">
+                    <div class="hero-top-info">
+                        <span class="hero-badge">⚡ New Technology 2026</span>
+                        <div class="promo-mini-card">
+                            <p>Flash Sale Berakhir dalam:</p>
+                            <div id="countdown" class="countdown-timer">
+                                <span id="days">00</span><small>d</small> : 
+                                <span id="hours">00</span><small>h</small> : 
+                                <span id="minutes">00</span><small>m</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h1>The Next Gen of <br><span class="text-gradient">Green Storage</span></h1>
+                    <p class="hero-subtitle">Beralih ke ekosistem energi pintar. Baterai LFP Grade A+ dengan manajemen sistem cerdas yang dirancang untuk masa depan industri dan rumah tangga.</p>
+                    
+                    <div class="hero-btns">
+                        <button class="btn-primary-glow nav-link" data-target="produk">
+                            <span>Jelajahi Produk</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                        <button class="btn-outline-pro nav-link" data-target="tentang">Pelajari Sistem</button>
+                    </div>
+
+                    <div class="hero-stats-grid">
+                        <div class="stat-card" data-tooltip="Lebih dari 3000 siklus pengisian ulang tanpa degradasi signifikan.">
+                            <div class="stat-icon"><i class="fas fa-bolt"></i></div>
+                            <div>
+                                <span class="stat-num">3000+</span>
+                                <span class="stat-desc">Siklus Hidup</span>
+                            </div>
+                        </div>
+                        <div class="stat-card" data-tooltip="Sistem keamanan dengan proteksi overcharge, over-discharge, dan pemantauan suhu real-time.">
+                            <div class="stat-icon"><i class="fas fa-shield-alt"></i></div>
+                            <div>
+                                <span class="stat-num">99.9%</span>
+                                <span class="stat-desc">Keamanan Tinggi</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-visual">
+                    <div class="main-visual-wrapper">
+                        <div class="visual-circle-bg"></div>
+                        <img src="https://images.unsplash.com/photo-1611365892117-00ac5ef43659?w=800" alt="Solar Tech" class="hero-main-img">
+                        <div class="floating-card-info">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Certified LFP Cell</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bagian Testimonial Baru -->
+            <div class="testimonial-section">
+                <h2>Apa Kata Pelanggan Kami</h2>
+                <div class="testimonial-slider">
+                    <div class="testimonial-card">
+                        <img src="https://via.placeholder.com/100" alt="User 1" class="testimonial-img">
+                        <p>"Baterai ini mengubah cara saya menyimpan energi rumah. Efisien dan tahan lama!"</p>
+                        <span>- Ahmad, Jakarta</span>
+                    </div>
+                    <div class="testimonial-card">
+                        <img src="https://via.placeholder.com/100" alt="User 2" class="testimonial-img">
+                        <p>"Teknologi LFP terbaik yang pernah saya gunakan untuk bisnis saya."</p>
+                        <span>- Siti, Surabaya</span>
+                    </div>
+                    <div class="testimonial-card">
+                        <img src="https://via.placeholder.com/100" alt="User 3" class="testimonial-img">
+                        <p>"Keamanan dan performa luar biasa. Sangat direkomendasikan!"</p>
+                        <span>- Budi, Bandung</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="produk" class="page">
+            <div class="shop-controls">
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Cari nama baterai atau komponen...">
+                    <button id="searchButton">
+                        <i class="fas fa-search"></i>
+                        <span>Cari</span>
+                    </button>
+                </div>
+                <div class="category-filter">
+                    <button class="cat-btn active" data-cat="all">Semua</button>
+                    <button class="cat-btn" data-cat="baterai">Baterai</button>
+                    <button class="cat-btn" data-cat="charger">Charger</button>
+                    <button class="cat-btn" data-cat="bms">BMS</button>
+                    <button class="cat-btn" data-cat="kontroler">Kontroler</button>
+                    <button class="cat-btn" data-cat="elektronika">Elektronika</button>
+                    <button class="cat-btn" data-cat="aksesoris">Aksesoris</button>
+                </div>
+            </div>
+            <div class="product-grid" id="productGrid">
+                <!-- Contoh Produk dengan Deskripsi Tambahan -->
+                <div class="product-card" data-category="baterai">
+                    <img src="https://via.placeholder.com/300" alt="Baterai LFP 100Ah">
+                    <h3>Baterai LFP 100Ah</h3>
+                    <p class="product-desc">Baterai lithium ferro phosphate berkapasitas tinggi untuk penyimpanan energi rumah tangga.</p>
+                    <div class="product-specs">
+                        <span>Kapasitas: 100Ah</span>
+                        <span>Siklus: 3000+</span>
+                        <span>Keamanan: Tinggi</span>
+                    </div>
+                    <button class="btn-detail" onclick="openModal('Baterai LFP 100Ah', 'Detail lengkap: Kapasitas 100Ah, tegangan 12V, dengan BMS terintegrasi. Cocok untuk sistem solar rumah. Harga: Rp 5.000.000.', 'https://via.placeholder.com/500')">Lihat Detail</button>
+                </div>
+                <!-- Tambahkan lebih banyak produk serupa -->
+            </div>
+        </section>
+
+        <!-- Bagian FAQ Baru -->
+        <section id="faq" class="page">
+            <h2>Pertanyaan Umum</h2>
+            <div class="faq-accordion">
+                <div class="faq-item">
+                    <button class="faq-question">Apa itu baterai LFP?</button>
+                    <div class="faq-answer">Baterai Lithium Ferro Phosphate (LFP) adalah jenis baterai lithium-ion yang aman, tahan lama, dan ramah lingkungan, ideal untuk penyimpanan energi hijau.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Berapa lama garansi produk?</button>
+                    <div class="faq-answer">Kami menawarkan garansi 5 tahun untuk baterai dan 2 tahun untuk komponen lainnya, dengan syarat penggunaan standar.</div>
+                </div>
+                <!-- Tambahkan lebih banyak FAQ -->
+            </div>
+        </section>
+
+        <!-- Footer Baru -->
+        <footer>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Kontak Kami</h3>
+                    <p>Email: info@greenstorage.com</p>
+                    <p>Tel: +62 123 456 789</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Ikuti Kami</h3>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <p>&copy; 2026 Green Storage. Semua hak dilindungi.</p>
+        </footer>
+    </main>
+
+    <!-- Modal untuk Detail Produk -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="modalTitle"></h2>
+            <img id="modalImg" src="" alt="Product Image">
+            <p id="modalDesc"></p>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript untuk Modal
+        function openModal(title, desc, imgSrc) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalDesc').innerText = desc;
+            document.getElementById('modalImg').src = imgSrc;
+            document.getElementById('productModal').style.display = 'block';
+        }
+        function closeModal() {
+            document.getElementById('productModal').style.display = 'none';
+        }
+
+        // JavaScript untuk FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const answer = button.nextElementSibling;
+                answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+            });
+        });
+
+        // JavaScript untuk Testimonial Slider (Sederhana)
+        let currentTestimonial = 0;
+        const testimonials = document.querySelectorAll('.testimonial-card');
+        setInterval(() => {
+            testimonials.forEach(t => t.style.display = 'none');
+            testimonials[currentTestimonial].style.display = 'block';
+            currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+        }, 3000);
+    </script>
+</body>
+</html>
