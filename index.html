@@ -50,6 +50,48 @@
     </header>
     <main class="container"> 
         <section id="home" class="page active">
+            <section class="hero-slider">
+                <div class="slide active" style="background-image: url('uploads/6135585.jpg');">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-text">
+                                <a href="#" onclick="event.preventDefault(); tampilkanHalaman('produk')" class="btn-hero">
+                                    Cek Spesifikasi
+                                </a>
+                            </div>
+                            <div class="col-img">
+                                <img src="uploads/slider1.png" alt="Charger IP67">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slide" style="background-image: url('uploads/5087833.jpg');">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-text">
+                                <a href="#" onclick="event.preventDefault(); bukaHalamanDetail('Hexa Power® charger pro 1850')" class="btn-hero">
+                                    Cek Spesifikasi
+                                </a>
+                            </div>
+                            <div class="col-img">
+                                <img src="uploads/slider2.png" alt="Baterai Gesits">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="prev-btn" onclick="moveSlide(-1)">&#10094;</button>
+                <button class="next-btn" onclick="moveSlide(1)">&#10095;</button>
+            </section>
+            <div class="featured-preview">
+                <div class="section-header">
+                    <h2>Produk Unggulan</h2>
+                    <p>Terhubung langsung dengan inventaris database kami</p>
+                </div>
+                <div id="featuredGrid" class="featured-grid">
+                </div>
+            </div>
             <div class="hero-premium">
                 <div class="hero-inner">
                     <div class="hero-text">
@@ -67,7 +109,7 @@
                         </div>
                     </div>
                     <div class="hero-image-box">
-                        <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=800" class="main-img" alt="Tech">
+                        <img src="uploads/WhatsApp Image 2026-01-24 at 20.51.11.jpeg" class="main-img" alt="Tech">
                     </div>
                 </div>
             </div>
@@ -92,14 +134,7 @@
                 </div>
             </div>
 
-            <div class="featured-preview">
-                <div class="section-header">
-                    <h2>Produk Unggulan</h2>
-                    <p>Terhubung langsung dengan inventaris database kami</p>
-                </div>
-                <div id="featuredGrid" class="featured-grid">
-                </div>
-            </div>
+            
 
             <div class="social-proof">
                 <div class="proof-stats">
@@ -180,8 +215,27 @@
                         <div class="stat-item"><strong>ISO</strong><br>Certified</div>
                     </div>
                 </div>
-                <div class="factory-img-container">
-                    <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80" alt="Pabrik Kami">
+                <div class="factory-gallery">
+                    <div class="gallery-main" onclick="perbesarFoto(this.querySelector('img').src)">
+                        <img src="uploads/WhatsApp Image 2026-01-24 at 20.51.09.jpeg" alt="Fasilitas Utama">
+                    </div>
+                    <div class="gallery-subs">
+                        <div class="sub-item" onclick="perbesarFoto(this.querySelector('img').src)">
+                            <img src="uploads/WhatsApp Image 2026-01-24 at 20.51.10(1).jpeg" alt="Proses 1">
+                        </div>
+                        <div class="sub-item" onclick="perbesarFoto(this.querySelector('img').src)">
+                            <img src="uploads/WhatsApp Image 2026-01-24 at 20.51.10.jpeg" alt="Proses 2">
+                        </div>
+                        <div class="sub-item" onclick="perbesarFoto(this.querySelector('img').src)">
+                            <img src="uploads/WhatsApp Image 2026-01-24 at 20.51.10(2).jpeg" alt="Proses 3">
+                        </div>
+                    </div>
+                </div>
+
+                <div id="fotoModal" class="modal-factory" onclick="tutupModal(event)">
+                    <span class="close-btn" onclick="tutupModal(event)">&times;</span>
+                    
+                    <img id="imgFull" src="" onclick="event.stopPropagation()">
                 </div>
             </div>
         </section>
@@ -346,13 +400,13 @@
         </div>
 
         <div class="footer-copyright">
-            <p>&copy; 2026 VoltGreen Energy Tech. Built for a Greener Future.</p>
+            <p>&copy; 2026 Hexapower. Built for a Greener Future.</p>
         </div>
     </footer>
 
     
-
     <script src="script.js"></script>
+     <script src="product.js"></script>
     <a href="https://api.whatsapp.com/send?phone=+6285178098989" class="wa-float-simple" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>

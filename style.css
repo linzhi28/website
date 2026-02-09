@@ -103,7 +103,7 @@ nav {
     border-radius: 5px;
     transition: 0.3s;
 }
-.container { max-width: 1700px; margin: 120px auto 50px; padding: 20px; }
+.container { padding: 20px; margin-top: 40px;}
 
 .page { display: none; animation: fadeIn 0.4s ease-out; }
 .page.active { display: block; }
@@ -1088,4 +1088,592 @@ select:focus {
         max-width: 100%;
         min-width: 100%;
     }
+}
+/* --- HERO SLIDER FULL SCREEN --- */
+
+
+.slide {
+    display: none; /* Sembunyikan slide yg tidak aktif */
+    width: 100%;
+    height: 100%;
+    animation: fadeEffect 1s; /* Efek transisi */
+    background-size: cover;
+    background-position: center;
+}
+
+.slide.active {
+    display: flex; /* Tampilkan slide aktif */
+    align-items: center;
+    justify-content: center;
+}
+
+/* Container dalam slide */
+.slide .container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.slide .row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+}
+
+/* Kolom Teks (Kiri) */
+.col-text {
+    flex: 1;
+    color: white;
+    z-index: 2;
+}
+
+.col-text h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    text-transform: uppercase;
+    color: black;
+}
+
+.col-text p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    opacity: 0.9;
+    color: green;
+}
+
+.btn-hero {
+    padding: 15px 40px;
+    background: #00ff88;
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 30px;
+    transition: 0.3s;
+    display: inline-block;
+}
+
+.btn-hero:hover {
+    background: #fff;
+    transform: scale(1.05);
+}
+
+/* Kolom Gambar (Kanan) */
+.col-img {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.col-img img {
+    max-width: 100%;
+    max-height: 1000px; /* Batasi tinggi gambar biar tidak raksasa */
+    object-fit: contain;
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
+    animation: floatImg 4s ease-in-out infinite; /* Efek melayang */
+}
+
+/* --- TOMBOL NEXT / PREV --- */
+.prev-btn, .next-btn {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    background: rgba(0,0,0,0.2);
+    border: none;
+    z-index: 10;
+}
+
+.next-btn {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev-btn:hover, .next-btn:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+
+/* --- DOTS NAVIGATION --- */
+.slider-dots {
+    position: absolute;
+    bottom: 30px;
+    width: 100%;
+    text-align: center;
+    z-index: 10;
+}
+
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 5px;
+    background-color: rgba(255,255,255,0.3);
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.dot.active, .dot:hover {
+    background-color: #00ff88;
+}
+
+/* --- RESPONSIVE (MOBILE) --- */
+@media (max-width: 960px) {
+    .slide .row {
+        flex-direction: column-reverse; /* Gambar di atas, Teks di bawah */
+        text-align: center;
+        justify-content: center;
+    }
+
+    .col-text h1 {
+        font-size: 2rem;
+        margin-top: 20px;
+    }
+
+    .col-img img {
+        max-height: 250px; /* Kecilkan gambar di HP */
+    }
+}
+
+/* --- ANIMASI --- */
+@keyframes fadeEffect {
+    from {opacity: 0.4} 
+    to {opacity: 1}
+}
+
+@keyframes floatImg {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+}
+.col-img {
+    width: 100%;
+    height: 100%;
+    /* 'cover' membuat gambar memenuhi area tanpa gepeng, 
+       tapi mungkin ada bagian pinggir yang terpotong sedikit */
+    object-fit: cover; 
+    
+    /* 'center' memastikan bagian tengah gambar selalu terlihat */
+    object-position: center; 
+    
+    display: block;
+}
+
+/* Jika teks di atas gambar tertutup, tambahkan overlay gelap sedikit */
+.slide::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Memberi efek gelap transparan */
+    z-index: 1;
+}
+
+/* Pastikan konten teks slider ada di depan overlay */
+.slide-content {
+    position: relative;
+    z-index: 2;
+}
+/* Pastikan container utama adalah patokan posisi */
+
+/* Style Umum Tombol Panah */
+.prev, .next {
+    position: absolute;
+    top: 50%; /* Taruh di tengah secara vertikal */
+    transform: translateY(-50%); /* Benar-benar senter di tengah */
+    z-index: 10; /* Supaya tidak tertutup gambar */
+    
+    /* Ukuran dan Tampilan */
+    background-color: rgba(0, 0, 0, 0.5); /* Background hitam transparan */
+    color: white;
+    padding: 20px 15px;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    border-radius: 5px;
+    transition: 0.3s;
+    user-select: none;
+}
+
+/* Posisi Spesifik di Ujung Kiri */
+.prev-btn {
+    left: 0; /* Tempel di ujung kiri */
+    border-radius: 0 5px 5px 0; /* Lengkungan hanya di sisi dalam */
+}
+
+/* Posisi Spesifik di Ujung Kanan */
+.next-btn {
+    right: 0; /* Tempel di ujung kanan */
+    border-radius: 5px 0 0 5px; /* Lengkungan hanya di sisi dalam */
+}
+
+/* Efek Hover */
+.prev-btn:hover, .next-btn:hover {
+    background-color: #00ff88; /* Warna hijau VoltGreen saat disentuh */
+    color: #000;
+}
+/* Container utama di dalam slide */
+.slide .container {
+    height: 100%;
+    display: flex;
+    align-items: center; /* Teks & Gambar rata tengah vertikal */
+}
+
+.slide .row {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Bagian Teks (Kiri) */
+.col-text {
+    flex: 1; /* Ambil 1 bagian */
+    padding-right: 30px;
+    color: white;
+}
+
+.col-text h1 {
+    font-size: 3.5rem; /* Perbesar font judul */
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+/* Bagian Gambar (Kanan) - KITA BUAT LEBIH DOMINAN */
+.col-img {
+    flex: 1.8; /* Kita kasih 1.8 bagian (hampir 2x lipat dari teks) */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.col-img img {
+    width: 100%; /* Gambar akan melebar mengikuti flex 1.8 tadi */
+    max-width: 900px; /* Batas maksimal biar gak pecah */
+    height: auto;
+    object-fit: contain;
+    
+    /* Trik biar makin Gede: Scale */
+    transform: scale(1.2); /* Perbesar 20% dari ukuran asli container */
+    
+    /* Tambahan Shadow agar produk 'pop-out' */
+    filter: drop-shadow(0 15px 50px rgba(0,0,0,0.6));
+    
+    /* Animasi masuk */
+    animation: fadeInImg 1.2s ease-out;
+}
+
+@keyframes fadeInImg {
+    from { opacity: 0; transform: scale(1) translateX(50px); }
+    to { opacity: 1; transform: scale(1.2) translateX(0); }
+}
+/* Container Galeri Baru */
+.factory-gallery {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* 1 foto besar, kolom sisanya untuk foto kecil */
+    gap: 10px;
+    height: 350px;
+}
+
+.gallery-main img, .sub-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.gallery-subs {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.sub-item {
+    height: calc(33.33% - 7px); /* Bagi 3 rata untuk foto kecil */
+}
+
+/* Efek Hover */
+.gallery-main img:hover, .sub-item img:hover {
+    filter: brightness(1.2);
+    transform: scale(1.02);
+}
+
+/* Modal Pop-up Pabrik */
+.modal-factory {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.95);
+    align-items: center;
+    justify-content: center;
+}
+
+#imgFull {
+    max-width: 90%;
+    max-height: 85vh;
+    border: 3px solid #00ff88;
+    border-radius: 15px;
+    margin: auto;
+    display: block;
+}
+
+/* Perbaikan untuk Mobile (Tumpuk Vertikal) */
+@media (max-width: 768px) {
+    .factory-gallery {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+    .gallery-subs {
+        flex-direction: row;
+        height: 100px;
+    }
+}
+/* Container Galeri Baru */
+.factory-gallery {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 10px;
+    height: 350px;
+    /* TAMBAHKAN INI: Agar grid tidak 'meledak' di dalam flex container */
+    min-width: 0;
+}
+
+/* Container untuk setiap item foto */
+.gallery-main, .gallery-subs {
+    /* TAMBAHKAN 3 BARIS INI: KUNCI AGAR GAMBAR TIDAK KELEBIHAN */
+    position: relative;
+    overflow: hidden; /* Ini yang memotong kelebihan gambar */
+    border-radius: 10px; /* Pindahkan border-radius ke containernya */
+}
+
+/* Update gaya gambarnya */
+.gallery-main img, .gallery-subs img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* HAPUS border-radius dari sini karena sudah dipindah ke atas */
+    /* border-radius: 10px;  <-- HAPUS BARIS INI */
+    cursor: pointer;
+    transition: 0.5s; /* Ubah jadi agak lama biar smooth */
+}
+
+/* Sisanya sama... */
+.gallery-subs {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: 100%; /* Pastikan dia menempati tinggi penuh parentnya */
+}
+/* ... */
+/* Modal Pop-up Pabrik - Gaya Baru */
+.modal-factory {
+    display: none; /* Tersembunyi secara default */
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    /* --- BAGIAN PENTING UNTUK EFEK BLUR --- */
+    /* Gunakan warna hitam tapi transparan */
+    background-color: rgba(0, 0, 0, 0.6); 
+    /* Ini yang membuat background di belakangnya jadi buram */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px); /* Untuk support Safari */
+    /* ------------------------------------- */
+
+    align-items: center;
+    justify-content: center;
+    flex-direction: column; /* Agar tombol close ada di atas gambar */
+}
+
+/* Gaya untuk Gambar yang Diperbesar */
+#imgFull {
+    /* Agar gambar tidak kelewatan batas layar */
+    max-width: 90%;  /* Maksimal 90% lebar layar */
+    max-height: 85vh; /* Maksimal 85% tinggi layar */
+    
+    /* Agar gambar tidak gepeng/terpotong */
+    object-fit: contain; 
+    
+    border: 2px solid #00ff88;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5); /* Tambah bayangan biar pop-up */
+    
+    /* Animasi saat muncul */
+    animation: zoomIn 0.3s ease-out;
+}
+
+/* Gaya untuk Tombol Close (X) */
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: #ffffff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    z-index: 10001; /* Pastikan di atas segalanya */
+    line-height: 1; /* Agar posisi vertikal pas */
+}
+
+.close-btn:hover {
+    color: #00ff88; /* Warna berubah saat disentuh */
+    transform: scale(1.1);
+}
+
+/* Animasi Zoom In sederhana */
+@keyframes zoomIn {
+    from {transform: scale(0.8); opacity: 0;}
+    to {transform: scale(1); opacity: 1;}
+}
+/* 1. Mengatur wadah (kotak) pembungkusnya */
+.hero-image-box {
+    width: 100%; /* Kotak mengambil lebar penuh yang tersedia */
+    /* max-width: 600px;  <-- OPTIONAL: Jika ingin membatasi lebar maksimal kotaknya */
+    overflow: hidden; /* KUNCI: Memastikan apapun yang 'berlebih' akan dipotong/disembunyikan */
+    position: relative; /* Praktik baik untuk container */
+}
+
+/* 2. Mengatur gambarnya */
+.main-img {
+    display: block; /* Menghilangkan celah putih kecil di bawah gambar */
+    max-width: 100%; /* KUNCI: Gambar tidak boleh lebih lebar dari wadahnya */
+    height: auto;    /* KUNCI: Tinggi menyesuaikan otomatis agar gambar tidak gepeng */
+    margin: 0 auto;  /* OPTIONAL: Menengahkan gambar jika lebih kecil dari wadahnya */
+}
+/* 1. KUNCI AREA SLIDER (Agar tidak ada blur bocor ke luar) */
+.hero-slider {
+    position: relative;
+    width: 100%;
+    height: 600px; /* Atur tinggi tetap agar rapi */
+    overflow: hidden; /* INI KUNCINYA: Memotong konten yang keluar batas */
+    background: #000;
+}
+
+.slide {
+    display: none;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+.slide.active {
+    display: flex; /* Aktifkan flex saat slide jalan */
+    align-items: center;
+}
+
+/* 2. RAPIKAN BARIS & KOLOM */
+.hero-slider .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 50px;
+}
+
+.hero-slider .row {
+    display: flex;
+    align-items: center; /* Teks dan Gambar sejajar tengah secara vertikal */
+    justify-content: space-between;
+    gap: 30px;
+}
+
+/* 3. ATUR TEKS & TOMBOL (Kiri) */
+.col-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column; /* Biar judul, p, dan tombol numpuk ke bawah */
+    align-items: flex-start; /* Rata kiri */
+    text-align: left;
+}
+
+.col-text h1 {
+    font-size: 3rem;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.btn-hero {
+    display: inline-block;
+    padding: 12px 30px;
+    background: #00ff88;
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 30px;
+    margin-top: 20px; /* Memberi jarak dari paragraf ke tombol */
+    transition: 0.3s;
+}
+
+/* 4. ATUR GAMBAR (Kanan) */
+.col-img {
+    flex: 1.2;
+    display: flex;
+    justify-content: center;
+}
+
+.col-img img {
+    max-width: 100%;
+    height: auto;
+    /* Hilangkan efek blur yang aneh jika ada di img */
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5)); 
+}
+
+/* 5. TOMBOL NAVIGASI DI UJUNG */
+.prev-btn, .next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,255,136, 0.2);
+    border: none;
+    color: white;
+    padding: 15px;
+    cursor: pointer;
+    z-index: 10;
+}
+.prev-btn { left: 10px; }
+.next-btn { right: 10px; }
+.btn-hero {
+    display: inline-block;
+    padding: 15px 40px;
+    background-color: #00ff88; /* Warna hijau Hexapower */
+    color: #000;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 50px;
+    margin-top: 25px;
+    transition: all 0.3s ease;
+    border: 2px solid #00ff88;
+    cursor: pointer;
+}
+
+.btn-hero:hover {
+    background-color: transparent;
+    color: #00ff88;
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
 }
