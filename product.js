@@ -1,13 +1,6 @@
 // products.js
 const allProducts = [
     {
-        name: "VoltGreen Battery Pack V1",
-        price: 2500000,
-        category: "Baterai",
-        description: "Baterai Lithium performa tinggi dengan kapasitas 60V 20Ah. Cocok untuk modifikasi motor listrik harian. Tahan hingga 1000 cycle pengisian.",
-        images: ["images/baterai-1.jpg", "images/baterai-detail-1.jpg", "images/baterai-detail-2.jpg"]
-    },
-    {
         name: "Hexa Power® Baterai 55ah",
         price: 12000000,
         category: "Baterai",
