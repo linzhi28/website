@@ -65,7 +65,7 @@ nav {
 
 .logo-container { display: flex; align-items: center; gap: 12px; }
 .main-logo {
-    height: 50px; 
+    height: 100px; 
     width: auto;  
     object-fit: contain;
     filter: drop-shadow(0 0 8px var(--primary-glow)); 
@@ -521,7 +521,7 @@ footer {
 
 /* Pengaturan ukuran logo footer */
 .footer-logo-img {
-    height: 50px; /* Atur tinggi sesuai selera */
+    height: 100px; /* Atur tinggi sesuai selera */
     width: auto;  /* Biar lebarnya menyesuaikan (tidak gepeng) */
     filter: drop-shadow(0 0 5px rgba(0, 255, 136, 0.3)); /* Efek cahaya tipis */
 }
