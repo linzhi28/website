@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <title>VoltGreen Admin - CRUD</title>
+    <link rel="stylesheet" href="style.css"> 
+</head>
+<body class="admin-page">
+    <div class="container">
+        <h1 class="section-title">Admin Dashboard</h1>
+        
+        <div class="glass-card">
+            <h3>Tambah Produk Baru</h3>
+            <form id="productForm">
+                <input type="text" id="pName" placeholder="Nama Produk" required>
+                <label>Kategori Produk</label>
+                <select id="pCat" required>
+                    <option value="" disabled selected>-- Pilih Kategori --</option>
+                    <option value="Baterai">Baterai</option>
+                    <option value="Aksesoris">Aksesoris</option>
+                    <option value="Kontroller">Kontroler</option> 
+                    <option value="Kabel">Kabel</option>
+                    <option value="Charger">Charger</option>
+                    <option value="Elektronika">Elektronika</option>
+                    <option value="BMS">BMS</option>
+                </select>
+                <input type="number" id="pPrice" placeholder="Harga" required>
+                <label>Upload Gambar Produk</label>
+                <input type="file" id="pImages" multiple accept="image/*">
+                <textarea id="pDesc" placeholder="Deskripsi"></textarea>
+                <button type="submit" id="btnSubmit" class="btn-primary">Simpan Ke Database</button>
+            </form>
+        </div>
+
+        <div class="glass-card" style="margin-top: 30px;">
+            <h3>Daftar Produk di Database</h3>
+            <table width="100%" id="adminTable">
+                <thead>
+                    <tr>
+                        <th>Nama</th>
+                        <th>Harga</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody id="adminProductList"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        let isEditing = false; 
+        let editId = null;     
+
+        const form = document.getElementById('productForm');
+        const btnSubmit = document.getElementById('btnSubmit'); 
+
+        // --- 1. FUNGSI SIMPAN ---
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const formData = new FormData();
+            formData.append('name', document.getElementById('pName').value);
+            formData.append('category', document.getElementById('pCat').value);
+            formData.append('price', document.getElementById('pPrice').value);
+            formData.append('description', document.getElementById('pDesc').value);
+
+            const imageInput = document.getElementById('pImages');
+            if (imageInput.files.length > 0) {
+                for (let i = 0; i < imageInput.files.length; i++) {
+                    formData.append('images', imageInput.files[i]);
+                }
+            }
+
+            let url = 'http://localhost:3000/api/products';
+            let method = 'POST';
+
+            // CEK APAKAH SEDANG EDIT
+            if (isEditing && editId) {
+                url = `http://localhost:3000/api/products/${editId}`;
+                method = 'PUT';
+            }
+
+            try {
+                const response = await fetch(url, {
+                    method: method,
+                    body: formData 
+                });
+
+                if (response.ok) {
+                    alert(isEditing ? 'Data Berhasil Diperbarui!' : 'Data Berhasil Disimpan!');
+                    resetForm(); // Ini harus jalan sempurna agar isEditing jadi false lagi
+                    loadAdminData(); 
+                } else {
+                    const errorData = await response.json();
+                    alert("Gagal: " + errorData.error);
+                }
+            } catch (error) {
+                console.error("Gagal menyimpan:", error);
+                alert("Terjadi kesalahan koneksi.");
+            }
+        });
+
+        // --- 2. FUNGSI START EDIT ---
+        function startEdit(product) {
+            document.getElementById('pName').value = product.name;
+            document.getElementById('pCat').value = product.category;
+            document.getElementById('pPrice').value = product.price;
+            document.getElementById('pDesc').value = product.description;
+        
+            // Hapus baris pImages.value yang lama karena bikin error
+            document.getElementById('pImages').value = ""; 
+
+            isEditing = true;
+            editId = product.id;
+
+            btnSubmit.innerText = "Update Produk Sekarang";
+            btnSubmit.style.background = "#e67e22"; 
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // --- 3. FUNGSI RESET FORM (DI SINI MASALAH TYPO TADI) ---
+        function resetForm() {
+            form.reset(); 
+            isEditing = false;
+            editId = null;
+        
+            // Perbaikan: Pakai btnSubmit sesuai ID di HTML kamu
+            btnSubmit.innerText = "Simpan Ke Database";
+            btnSubmit.style.background = ""; 
+        }
+
+        // --- 4. TAMPILKAN DATA ---
+        async function loadAdminData() {
+            try {
+                const res = await fetch('http://localhost:3000/api/products');
+                const products = await res.json();
+                const list = document.getElementById('adminProductList');
+                list.innerHTML = ''; 
+
+                products.forEach(p => {
+                    const productData = JSON.stringify(p).replace(/"/g, '&quot;');
+                    list.innerHTML += `
+                        <tr>
+                            <td>${p.name}</td>
+                            <td>Rp ${Number(p.price).toLocaleString()}</td>
+                            <td>
+                                <button onclick="startEdit(${productData})" style="background:orange; color:white; border:none; padding:5px 10px; border-radius:4px; cursor:pointer;">Edit</button>
+                                <button onclick="deleteProduct(${p.id})" style="background:red; color:white; border:none; padding:5px 10px; border-radius:4px; cursor:pointer;">Hapus</button>
+                            </td>
+                        </tr>
+                    `;
+                });
+            } catch (e) { console.log("Gagal muat data"); }
+        }
+
+        // --- 5. HAPUS DATA ---
+        async function deleteProduct(id) {
+            if(confirm('Yakin ingin menghapus?')) {
+                await fetch(`http://localhost:3000/api/products/${id}`, { method: 'DELETE' });
+                loadAdminData();
+            }
+        }
+
+        loadAdminData();
+    </script>
+</body>
+</html>
