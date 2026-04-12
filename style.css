@@ -1170,7 +1170,7 @@ select:focus {
 
 .col-img img {
     max-width: 100%;
-    max-height: 1000px; /* Batasi tinggi gambar biar tidak raksasa */
+    max-height: 500px; /* Batasi tinggi gambar biar tidak raksasa */
     object-fit: contain;
     filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
     animation: floatImg 4s ease-in-out infinite; /* Efek melayang */
