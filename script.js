@@ -45,27 +45,44 @@ window.bukaHalamanDetail = (namaProduk) => {
 
     document.getElementById('detailJudul').innerText = p.name;
     document.getElementById('detailKategori').innerText = p.category;
-    document.getElementById('detailHarga').innerText = "Rp " + p.price.toLocaleString('id-ID');
     document.getElementById('detailDeskripsi').innerHTML = p.description;
+
+    // --- LOGIKA BARU: HARGA DISKON & HARGA CORET ---
+    const detailHargaEl = document.getElementById('detailHarga');
+    let hargaUntukWA = p.price; // Default harga untuk dikirim ke WA
+
+    if (p.discountPrice && p.discountPrice > 0) {
+        // Kalau ada diskon, pakai HTML harga coret
+        detailHargaEl.innerHTML = `
+            <div class="price-container">
+                <span class="discount-price">Rp ${p.discountPrice.toLocaleString('id-ID')}</span>
+                <span class="original-price-slashed">Rp ${p.price.toLocaleString('id-ID')}</span>
+            </div>
+        `;
+        hargaUntukWA = p.discountPrice; // WA akan mengirim harga diskon
+    } else {
+        // Kalau normal, tampilkan biasa tanpa coretan
+        detailHargaEl.innerHTML = `<span class="normal-price">Rp ${p.price.toLocaleString('id-ID')}</span>`;
+    }
+    // -----------------------------------------------
 
     const mainImg = document.getElementById('detailImg');
     const thumbGallery = document.getElementById('thumbGallery');
     thumbGallery.innerHTML = '';  
 
     if (p.images && p.images.length > 0) {
-        // Set gambar utama dari index pertama
         mainImg.src = p.images[0];
 
-        // Buat thumbnail jika gambar lebih dari 1
         p.images.forEach((url, index) => {
             const thumb = document.createElement('img');
             thumb.src = url;
             thumb.className = "thumb-item";
             thumb.style = "width: 70px; height: 70px; object-fit: cover; border-radius: 8px; cursor: pointer; border: 2px solid rgba(255,255,255,0.1); margin-right: 5px;";
             
+            if(index === 0) thumb.style.borderColor = "#00ff88"; // Set thumb pertama aktif
+
             thumb.onclick = () => { 
                 mainImg.src = url; 
-                // Reset border semua thumb lalu beri warna ke yang aktif
                 document.querySelectorAll('.thumb-item').forEach(img => img.style.borderColor = "rgba(255,255,255,0.1)");
                 thumb.style.borderColor = "#00ff88";
             };
@@ -73,10 +90,14 @@ window.bukaHalamanDetail = (namaProduk) => {
         });
     }
     
-    // Link WhatsApp Otomatis
+    // Link WhatsApp Otomatis (Sudah Fix Menggunakan Harga Diskon jika Ada)
     const waBtn = document.getElementById('detailWaBtn');
     if(waBtn) {
-        const pesan = `Halo VoltGreen, saya tertarik dengan produk: *${p.name}* (Rp ${p.price.toLocaleString('id-ID')})`;
+        const pesan = `Halo Hexapower, saya tertarik dengan produk: *${p.name}* (Harga: Rp ${hargaUntukWA.toLocaleString('id-ID')})
+
+Nama: 
+No. Telp: 
+Alamat: `;
         waBtn.href = `https://wa.me/6285178098989?text=${encodeURIComponent(pesan)}`;
     }
 };
@@ -99,6 +120,22 @@ function renderProductsUI(filterCat = 'all', searchText = '') {
     }
 
     filtered.forEach((p) => {
+        // --- LOGIKA DISKON HALAMAN UTAMA ---
+        let htmlHarga = "";
+        if (p.discountPrice && p.discountPrice > 0) {
+            htmlHarga = `
+                <div class="price-container" style="display:flex; flex-direction:column; gap:2px; margin-top:10px;">
+                    <span class="discount-price" style="color:#00ff88; font-weight:bold; font-size:1.1rem;">Rp ${p.discountPrice.toLocaleString('id-ID')}</span>
+                    <span class="original-price-slashed" style="color:#888888; text-decoration:line-through; font-size:0.9rem; font-weight:normal;">Rp ${p.price.toLocaleString('id-ID')}</span>
+                </div>
+            `;
+        } else {
+            htmlHarga = `
+                <p style="color:#00ff88; font-weight:bold; margin-top:10px; font-size:1.1rem;">Rp ${p.price.toLocaleString('id-ID')}</p>
+            `;
+        }
+        // ----------------------------------
+
         const card = document.createElement('div');
         card.className = 'product-card glass-card';
         card.onclick = () => window.bukaHalamanDetail(p.name); 
@@ -107,7 +144,9 @@ function renderProductsUI(filterCat = 'all', searchText = '') {
             <div style="padding:15px;">
                 <span style="font-size:10px; color:#00ff88; text-transform:uppercase; font-weight:bold;">${p.category}</span>
                 <h3 style="margin-top:5px; color:white; font-size:1.1rem;">${p.name}</h3>
-                <p style="color:#00ff88; font-weight:bold; margin-top:10px;">Rp ${p.price.toLocaleString('id-ID')}</p>
+                
+                ${htmlHarga}
+                
             </div>`;
         grid.appendChild(card);
     });

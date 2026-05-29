@@ -1677,3 +1677,27 @@ select:focus {
     color: #00ff88;
     box-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
 }
+.price-container {
+    display: flex;
+    flex-direction: column; /* Mengurutkan harga diskon di atas, harga coret di bawah */
+    gap: 2px;
+    margin: 5px 0;
+}
+
+.discount-price {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #00ff88; /* Warna hijau khas Hexapower */
+}
+
+.original-price-slashed {
+    font-size: 1rem;
+    color: #aaaaaa;
+    text-decoration: line-through; /* Efek garis coret */
+}
+
+.normal-price {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffffff;
+}
