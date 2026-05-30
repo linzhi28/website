@@ -1692,12 +1692,42 @@ select:focus {
 
 .original-price-slashed {
     font-size: 1rem;
-    color: #aaaaaa;
+    color: #ff0000;
     text-decoration: line-through; /* Efek garis coret */
 }
-
 .normal-price {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #ffffff;
+    color: #ff0000;
+}
+/* Container Bilah Pengumuman */
+.announcement-bar {
+    background-color: #111111; /* Hitam pekat biar kontras */
+    border-bottom: 1px solid rgba(0, 255, 136, 0.3); /* Garis batas tipis warna hijau neon */
+    overflow: hidden;
+    position: relative;
+    padding: 8px 0;
+    width: 100%;
+    z-index: 9999; /* Memastikan paling atas dan gak ketutup elemen lain */
+}
+
+/* Animasi Teks Berjalan */
+.marquee-text {
+    display: inline-block;
+    white-space: nowrap;
+    font-size: 12px;
+    font-weight: bold;
+    color: #00ff88; /* Hijau neon Hexapower */
+    letter-spacing: 1px;
+    animation: jalanTerus 15s linear infinite; /* Kecepatan jalan teks (15 detik) */
+}
+
+/* Logika pergerakan dari kanan ke kiri */
+@keyframes jalanTerus {
+    0% {
+        transform: translate3d(100%, 0, 0);
+    }
+    100% {
+        transform: translate3d(-100%, 0, 0);
+    }
 }

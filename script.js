@@ -126,7 +126,7 @@ function renderProductsUI(filterCat = 'all', searchText = '') {
             htmlHarga = `
                 <div class="price-container" style="display:flex; flex-direction:column; gap:2px; margin-top:10px;">
                     <span class="discount-price" style="color:#00ff88; font-weight:bold; font-size:1.1rem;">Rp ${p.discountPrice.toLocaleString('id-ID')}</span>
-                    <span class="original-price-slashed" style="color:#888888; text-decoration:line-through; font-size:0.9rem; font-weight:normal;">Rp ${p.price.toLocaleString('id-ID')}</span>
+                    <span class="original-price-slashed" style="color:#ff0000; text-decoration:line-through; font-size:0.9rem; font-weight:normal;">Rp ${p.price.toLocaleString('id-ID')}</span>
                 </div>
             `;
         } else {
@@ -192,13 +192,31 @@ document.addEventListener('DOMContentLoaded', () => {
     const featuredGrid = document.getElementById('featuredGrid');
     if (featuredGrid) {
         allProducts.slice(0, 3).forEach(p => {
+            // --- LOGIKA DISKON PRODUK UNGGULAN ---
+            let htmlHarga = "";
+            if (p.discountPrice && p.discountPrice > 0) {
+                htmlHarga = `
+                    <div class="price-container" style="display:flex; flex-direction:column; gap:2px; margin-top:5px;">
+                        <span class="discount-price" style="color:#00ff88; font-weight:bold; font-size:1rem;">Rp ${p.discountPrice.toLocaleString('id-ID')}</span>
+                        <span class="original-price-slashed" style="color:#ff0000; text-decoration:line-through; font-size:0.85rem; font-weight:normal;">Rp ${p.price.toLocaleString('id-ID')}</span>
+                    </div>
+                `;
+            } else {
+                htmlHarga = `
+                    <p style="color:#00ff88; font-weight:bold; margin-top:5px; font-size:1rem;">Rp ${p.price.toLocaleString('id-ID')}</p>
+                `;
+            }
+            // -------------------------------------
+
             const card = document.createElement('div');
             card.className = 'product-card glass-card';
             card.onclick = () => window.bukaHalamanDetail(p.name);
             card.innerHTML = `
                 <img src="${p.images[0]}" style="width:100%; height:180px; object-fit:cover; border-radius:10px;">
-                <h4>${p.name}</h4>
-                <p style="color:#00ff88;">Rp ${p.price.toLocaleString('id-ID')}</p>`;
+                <h4 style="margin-top:10px; color:white;">${p.name}</h4>
+                
+                ${htmlHarga}
+            `;
             featuredGrid.appendChild(card);
         });
     }
