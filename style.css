@@ -1,5 +1,5 @@
 :root {
-    --primary: #84BD26;
+    --primary: #a8cf38;
     --accent: #34d399;
     --bg-dark: #020617;
     --glass: rgba(255, 255, 255, 0.05);
@@ -135,7 +135,7 @@ nav {
     -webkit-text-fill-color: transparent;
 }
 .highlight {
-    color: #00ff88;
+    color: #a8cf38;
     text-shadow: 0 0 20px rgba(0, 255, 136, 0.4);
 }
 
@@ -177,14 +177,14 @@ nav {
 
 .value-card i {
     font-size: 2.5rem;
-    color: #00ff88;
+    color: #a8cf38;
     margin-bottom: 20px;
 }
 
 .value-card:hover {
     transform: translateY(-10px);
     background: rgba(0, 255, 136, 0.05);
-    border-color: #00ff88;
+    border-color: #a8cf38;
 }
 
 /* Featured Grid */
@@ -240,7 +240,7 @@ nav {
 }
 
 .product-card .price {
-    color: #00ff88;
+    color: #a8cf38;
     font-weight: 800;
     text-align: center;
 }
@@ -259,7 +259,7 @@ nav {
 
 .stat-item h2 {
     font-size: 3rem;
-    color: #00ff88;
+    color: #a8cf38;
 }
 /* Produk */
 .shop-controls { margin-bottom: 50px; text-align: center; }
@@ -541,16 +541,16 @@ footer {
     padding: 5px 12px;
     border-radius: 20px;
     font-size: 0.75rem;
-    color: #00ff88;
+    color: #a8cf38;
     border: 1px solid rgba(0, 255, 136, 0.2);
 }
 
 .status-dot {
     width: 6px;
     height: 6px;
-    background: #00ff88;
+    background: #a8cf38;
     border-radius: 50%;
-    box-shadow: 0 0 8px #00ff88;
+    box-shadow: 0 0 8px #a8cf38;
     animation: blink 1.5s infinite;
 }
 
@@ -569,7 +569,7 @@ footer {
     left: 0;
     width: 30px;
     height: 2px;
-    background: #00ff88;
+    background: #a8cf38;
 }
 
 .footer-col ul { list-style: none; }
@@ -580,7 +580,7 @@ footer {
     transition: 0.3s;
     font-size: 0.95rem;
 }
-.footer-col ul li a:hover { color: #00ff88; padding-left: 5px; }
+.footer-col ul li a:hover { color: #a8cf38; padding-left: 5px; }
 
 /* Contact & Social Grid */
 .contact-item {
@@ -590,7 +590,7 @@ footer {
     color: #888;
     font-size: 0.9rem;
 }
-.contact-item i { color: #00ff88; margin-top: 3px; }
+.contact-item i { color: #a8cf38; margin-top: 3px; }
 .contact-item a { color: #888; text-decoration: none; transition: 0.3s; }
 .contact-item a:hover { color: white; }
 
@@ -609,10 +609,10 @@ footer {
     transition: 0.3s;
 }
 .social-box:hover {
-    background: #00ff88;
+    background: #a8cf38;
     color: #05161a;
     transform: translateY(-5px);
-    border-color: #00ff88;
+    border-color: #a8cf38;
 }
 
 .footer-copyright {
@@ -795,7 +795,7 @@ select:focus {
     box-shadow: 0 0 10px var(--primary); 
 }
 #searchButton {
-    background: #00ff88;
+    background: #a8cf38;
     color: #05161a;
     border: none;
     padding: 12px 25px;
@@ -935,14 +935,14 @@ select:focus {
     transition: 0.3s;
 }
 .contact-info p a:hover {
-    color: #00ff88; 
+    color: #a8cf38; 
     padding-left: 5px; 
 }
 
 
 .contact-info p i {
     width: 25px; 
-    color: #00ff88;
+    color: #a8cf38;
 }
 /* CONTAINER DETAIL */
 .detail-container {
@@ -957,8 +957,8 @@ select:focus {
 
 .btn-back {
     background: rgba(0, 255, 136, 0.1);
-    border: 1px solid #00ff88;
-    color: #00ff88;
+    border: 1px solid #a8cf38;
+    color: #a8cf38;
     padding: 8px 16px;
     border-radius: 8px;
     cursor: pointer;
@@ -967,7 +967,7 @@ select:focus {
 }
 
 .btn-back:hover {
-    background: #00ff88;
+    background: #a8cf38;
     color: #000;
 }
 
@@ -1016,7 +1016,7 @@ select:focus {
 }
 
 .badge-cat {
-    background: #00ff88;
+    background: #a8cf38;
     color: #000;
     padding: 3px 10px;
     border-radius: 5px;
@@ -1033,7 +1033,7 @@ select:focus {
 }
 
 #detailHarga {
-    color: #00ff88;
+    color: #a8cf38;
     font-size: 1.8rem;
     font-weight: 800;
     margin-bottom: 20px;
@@ -1045,7 +1045,7 @@ select:focus {
 }
 
 .desc-section h4 {
-    color: #00ff88;
+    color: #a8cf38;
     margin-bottom: 10px;
 }
 
@@ -1146,7 +1146,7 @@ select:focus {
 
 .btn-hero {
     padding: 15px 40px;
-    background: #00ff88;
+    background: #a8cf38;
     color: #000;
     text-decoration: none;
     font-weight: bold;
@@ -1225,7 +1225,7 @@ select:focus {
 }
 
 .dot.active, .dot:hover {
-    background-color: #00ff88;
+    background-color: #a8cf38;
 }
 
 /* --- RESPONSIVE (MOBILE) --- */
@@ -1322,7 +1322,7 @@ select:focus {
 
 /* Efek Hover */
 .prev-btn:hover, .next-btn:hover {
-    background-color: #00ff88; /* Warna hijau VoltGreen saat disentuh */
+    background-color: #a8cf38; /* Warna hijau VoltGreen saat disentuh */
     color: #000;
 }
 /* Container utama di dalam slide */
@@ -1431,7 +1431,7 @@ select:focus {
 #imgFull {
     max-width: 90%;
     max-height: 85vh;
-    border: 3px solid #00ff88;
+    border: 3px solid #a8cf38;
     border-radius: 15px;
     margin: auto;
     display: block;
@@ -1518,7 +1518,7 @@ select:focus {
     /* Agar gambar tidak gepeng/terpotong */
     object-fit: contain; 
     
-    border: 2px solid #00ff88;
+    border: 2px solid #a8cf38;
     border-radius: 12px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.5); /* Tambah bayangan biar pop-up */
     
@@ -1541,7 +1541,7 @@ select:focus {
 }
 
 .close-btn:hover {
-    color: #00ff88; /* Warna berubah saat disentuh */
+    color: #a8cf38; /* Warna berubah saat disentuh */
     transform: scale(1.1);
 }
 
@@ -1620,7 +1620,7 @@ select:focus {
 .btn-hero {
     display: inline-block;
     padding: 12px 30px;
-    background: #00ff88;
+    background: #a8cf38;
     color: #000;
     text-decoration: none;
     font-weight: bold;
@@ -1660,7 +1660,7 @@ select:focus {
 .btn-hero {
     display: inline-block;
     padding: 15px 40px;
-    background-color: #00ff88; /* Warna hijau Hexapower */
+    background-color: #a8cf38; /* Warna hijau Hexapower */
     color: #000;
     font-weight: bold;
     text-transform: uppercase;
@@ -1668,13 +1668,13 @@ select:focus {
     border-radius: 50px;
     margin-top: 25px;
     transition: all 0.3s ease;
-    border: 2px solid #00ff88;
+    border: 2px solid #a8cf38;
     cursor: pointer;
 }
 
 .btn-hero:hover {
     background-color: transparent;
-    color: #00ff88;
+    color: #a8cf38;
     box-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
 }
 .price-container {
@@ -1687,7 +1687,7 @@ select:focus {
 .discount-price {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #00ff88; /* Warna hijau khas Hexapower */
+    color: #a8cf38; /* Warna hijau khas Hexapower */
 }
 
 .original-price-slashed {
@@ -1698,7 +1698,7 @@ select:focus {
 .normal-price {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #00ff88;
+    color: #a8cf38;
 }
 /* Container Bilah Pengumuman */
 .announcement-bar {
@@ -1717,7 +1717,7 @@ select:focus {
     white-space: nowrap;
     font-size: 12px;
     font-weight: bold;
-    color: #84BD26; /* Hijau neon Hexapower */
+    color: #a8cf38; /* Hijau neon Hexapower */
     letter-spacing: 1px;
     animation: jalanTerus 15s linear infinite; /* Kecepatan jalan teks (15 detik) */
 }
