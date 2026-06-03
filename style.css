@@ -1,5 +1,5 @@
 :root {
-    --primary: #10b981;
+    --primary: #84BD26;
     --accent: #34d399;
     --bg-dark: #020617;
     --glass: rgba(255, 255, 255, 0.05);
@@ -1703,7 +1703,7 @@ select:focus {
 /* Container Bilah Pengumuman */
 .announcement-bar {
     background-color: #111111; /* Hitam pekat biar kontras */
-    border-bottom: 1px solid rgba(0, 255, 136, 0.3); /* Garis batas tipis warna hijau neon */
+    border-bottom: 1px solid #84BD26; /* Garis batas tipis warna hijau neon */
     overflow: hidden;
     position: relative;
     padding: 8px 0;
@@ -1717,7 +1717,7 @@ select:focus {
     white-space: nowrap;
     font-size: 12px;
     font-weight: bold;
-    color: #00ff88; /* Hijau neon Hexapower */
+    color: #84BD26; /* Hijau neon Hexapower */
     letter-spacing: 1px;
     animation: jalanTerus 15s linear infinite; /* Kecepatan jalan teks (15 detik) */
 }
