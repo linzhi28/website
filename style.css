@@ -60,13 +60,10 @@ nav {
     display: flex; justify-content: space-between; align-items: center;
     padding: 1rem 5%;
 }
-.logo-text { font-weight: 800; font-size: 1.5rem; letter-spacing: 2px; transition: 0.3s; }
-.logo-text:hover { transform: scale(1.05); text-shadow: 0 0 15px var(--primary); }
-
 .logo-container { display: flex; align-items: center; gap: 12px; }
 .main-logo {
     height: 100px; 
-    width: auto;  
+    width: 200px;  
     object-fit: contain;
     filter: drop-shadow(0 0 8px var(--primary-glow)); 
     transition: transform 0.3s ease;
@@ -723,7 +720,7 @@ footer {
     100% { transform: scale(1); opacity: 1; }
 }
 header {
-    top: 35px; /* Menyesuaikan posisi navbar agar tidak menutupi announcement bar */
+    top: 0px; /* Menyesuaikan posisi navbar agar tidak menutupi announcement bar */
 }
 
 @media (max-width: 768px) {
@@ -1729,5 +1726,67 @@ select:focus {
     }
     100% {
         transform: translate3d(-100%, 0, 0);
+    }
+}
+/* Pastikan nav menggunakan flexbox biar susunannya rapi menyamping */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+/* Style untuk wadah tombol download */
+.nav-buttons-container {
+    display: flex;
+    align-items: center;
+}
+
+/* Memastikan tombol download bentuknya pas dan estetik */
+.btn-nav {
+    background-color: #00ff88; /* Hijau neon Hexapower */
+    color: black !important;
+    font-weight: bold;
+    padding: 8px 16px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.btn-nav:hover {
+    box-shadow: 0 0 10px #00ff88;
+}
+
+/* --- Pengaturan Khusus Layar HP --- */
+@media screen and (max-width: 768px) {
+    /* Memberi sedikit jarak antara tombol download dengan hamburger menu */
+    .nav-buttons-container {
+        margin-left: auto; /* Mendorong tombol ke kanan mendekati hamburger */
+        margin-right: 15px; /* Jarak pas ke tombol hamburger */
+    }
+    
+    .btn-nav {
+        padding: 6px 12px; /* Dikecilkan sedikit di HP biar gak kesempitan */
+        font-size: 12px;
+    }
+}
+@media screen and (max-width: 768px) {
+    /* --- TAMBAHKAN/UBAH BAGIAN INI --- */
+    header, nav, .navbar, .menu-area {
+        margin-top: 0 !important;
+        top: 0 !important;
+        padding-top: 5px; /* Jika masih ada jarak longgar, setel padding atasnya sekecil mungkin */
+    }
+    
+    /* Jarak antara tombol download luar dan hamburger */
+    .nav-buttons-container {
+        margin-left: auto;
+        margin-right: 15px;
+    }
+    
+    .btn-nav {
+        padding: 6px 12px;
+        font-size: 12px;
     }
 }
