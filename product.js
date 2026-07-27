@@ -9,7 +9,7 @@ const allProducts = [
         images: ["uploads/charger pro 2800 ukuran.jpeg", "uploads/spec charger pro 2800.jpeg", "uploads/fisik charger pro 2800.jpeg"]
     },
     {
-        name: "Hexa Power® charger pro 1850",
+        name: "Hexa Power® charger air 1850",
         price: 1499000,
         discountPrice: 1449000,
         category: "Charger",
