@@ -179,7 +179,34 @@ function showSlides(n) {
 
 function startAutoSlide() { slideInterval = setInterval(() => window.moveSlide(1), 5000); }
 function resetAutoSlide() { clearInterval(slideInterval); startAutoSlide(); }
+document.addEventListener("DOMContentLoaded", function () {
+    const promoModal = document.getElementById("promoModal");
+    const closePromo = document.getElementById("closePromo");
+    const promoAction = document.getElementById("promoAction");
 
+    // DIBUAT SELALU MUNCUL DULU BUAT TESTING
+    if (promoModal) {
+        setTimeout(() => {
+            promoModal.classList.add("show");
+        }, 800);
+    }
+
+    function tutupPromo() {
+        if (promoModal) {
+            promoModal.classList.remove("show");
+        }
+    }
+
+    if (closePromo) closePromo.addEventListener("click", tutupPromo);
+
+    if (promoModal) {
+        promoModal.addEventListener("click", function (e) {
+            if (e.target === promoModal) tutupPromo();
+        });
+    }
+
+    if (promoAction) promoAction.addEventListener("click", tutupPromo);
+});
 // --- 6. INITIALIZATION (DOM CONTENT LOADED) ---
 document.addEventListener('DOMContentLoaded', () => {
     showSlides(slideIndex);
