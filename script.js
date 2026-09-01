@@ -179,32 +179,32 @@ function showSlides(n) {
 
 function startAutoSlide() { slideInterval = setInterval(() => window.moveSlide(1), 5000); }
 function resetAutoSlide() { clearInterval(slideInterval); startAutoSlide(); }
+// --- LOGIKA POP-UP IKLAN (NONAKTIF/OFF) ---
 document.addEventListener("DOMContentLoaded", function () {
     const promoModal = document.getElementById("promoModal");
     const closePromo = document.getElementById("closePromo");
     const promoAction = document.getElementById("promoAction");
 
-    // DIBUAT SELALU MUNCUL DULU BUAT TESTING
-    if (promoModal) {
+    // UBAH JADI 'false' AGAR TIDAK PERNAH MUNCUL (Matikan Sementara)
+    const isPromoActive = false; 
+
+    if (isPromoActive && promoModal) {
         setTimeout(() => {
             promoModal.classList.add("show");
-        }, 800);
+        }, 1200);
     }
 
+    // Fungsi tutup tetap dibiarkan agar tidak error jika dipanggil
     function tutupPromo() {
-        if (promoModal) {
-            promoModal.classList.remove("show");
-        }
+        if (promoModal) promoModal.classList.remove("show");
     }
 
     if (closePromo) closePromo.addEventListener("click", tutupPromo);
-
     if (promoModal) {
         promoModal.addEventListener("click", function (e) {
             if (e.target === promoModal) tutupPromo();
         });
     }
-
     if (promoAction) promoAction.addEventListener("click", tutupPromo);
 });
 // --- 6. INITIALIZATION (DOM CONTENT LOADED) ---
